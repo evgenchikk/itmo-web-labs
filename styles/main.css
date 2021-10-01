@@ -1,0 +1,20 @@
+html {
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: rgb(236, 229, 236);
+}
+
+a {
+    color: rgb(97, 70, 97)
+}
+
+p {
+    font-size: medium;
+}
+
+/*div.main {
+    padding-bottom: 0%;
+}*/
