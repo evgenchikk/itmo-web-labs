@@ -5,6 +5,25 @@ html {
 
 body {
     background-color: rgb(236, 229, 236);
+    padding: 2px;
+}
+
+aside {
+    width: max-content;
+    float: right;
+    padding: 5px;
+}
+
+aside:hover {
+    background-color: rgb(256, 256, 256);
+}
+
+aside:hover::after {
+    content: attr(data-title);
+    position: absolute;
+    background: rgba(103, 185, 168, 0.3); 
+    text-align: center;
+    font-size: smaller;
 }
 
 a {
@@ -12,16 +31,37 @@ a {
     text-decoration: none;
 }
 
-
 a:hover {
     text-decoration: underline;
-    font-size: larger;
+    font-size: 105%;
+    font-family: 'Comic Sans MS';
 }
 
 p {
-    font-size: medium;
+    font-size: 100%;
 }
 
-/*div.main {
-    padding-bottom: 0%;
-}*/
+section {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+.preformatted {
+    white-space: pre;
+    font-size: 110%;
+}
+
+.pic {
+    white-space: pre;
+    font-family: monospace;
+	font-size: 5px;
+    width: max-content;
+    background-color: white;
+}
+
+div.test {
+    width: max-content;
+    font-size: 10vh;
+    background-color: white;
+}
