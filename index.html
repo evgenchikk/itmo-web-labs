@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
 	<title>Portfolio Belonogov Evgeny M33122</title>
 	<meta charset="utf-8"/>
 	<meta name="author" content="Belonogov Evgeny"/>
 	<meta name="description" content="This page can be used as a portfolio"/>
-	<meta lang="ru"/>
 	<link rel="stylesheet" type="text/css" href="styles/main.css">
 </head>
 <body>
 	<header>
-  <article><h1>Добро пожаловать на мой сайт!</h1></article>
+  <h1>Добро пожаловать на мой сайт!</h1>
     <aside data-title="Это содержимое тега <aside>">
       <p>Это</p>
       <p>Содержимое</p>
@@ -30,12 +29,12 @@
     <section>
       <p>Код, которым можно гордиться:</p>
       <code>
-        <div class="preformatted">
+        <pre>
 int main(int argc, char* arhv[]) {
-	std::cout << "Lorem Ipsum";
+	std::cout &lt;&lt; "Lorem Ipsum";
 	return 0;
 }
-        </div> 
+        </pre> 
       </code>
     </section>
     <section>
@@ -60,7 +59,7 @@ int main(int argc, char* arhv[]) {
       <p>где n - целое число > 2</p>
     </section>
     <section>
-      <p>Рисунок из символов ASCII:</p>
+      <h4>Рисунок из символов ASCII:</h4>
       <div class="pic">
                                                                     X
                                                                   XXX
@@ -197,13 +196,17 @@ XXZZ..ZZ.ZZYYYYYYYZZZZ..ZZYYY.X          YYYYYYYYYY.....Y..ZY..ZYYZZ..ZXX
                                                           Z
       </div> 
     </section>
+    <section>
+      <h4></h4>
+      <img class="image"></img>
+    </section>
 	</main>
 	<footer>
-    <p>Опубликовано: <time pubdate datetime="2021-10-10T08:23:11+03:00">10 октября</time></p>
+    <p>Опубликовано: <time datetime="2021-10-10T08:23:11+03:00">10 октября</time></p>
 		<p><a title="Go to vk.com" href="https://www.vk.com/evgeny_belonogov">Ссылка на VK</a></p>
 		<p><a title="Go" href="./src/page.html">Перейти к изображению</a></p>
 		<!-- <marquee direction="right">вот так вот</marquee> -->
-    <script language="javascript" type="text/javascript">
+    <script>
       var d = new Date();
       var day=new Array("Воскресенье","Понедельник","Вторник","Среда","Четверг","Пятница","Суббота");
       var month=new Array("января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря");
