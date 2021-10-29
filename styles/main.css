@@ -8,10 +8,18 @@ body {
     padding: 2px;
 }
 
+body.photogallery {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    padding: 2px;
+    /* height: 100vh; */
+}
+
 aside {
     width: max-content;
     float: right;
-    padding: 5px;
+    padding: 2vh;
     text-transform: uppercase;
 }
 
@@ -25,6 +33,11 @@ aside:hover::after {
     background: rgba(103, 185, 168, 0.3); 
     text-align: center;
     font-size: smaller;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
 }
 
 a {
@@ -43,10 +56,10 @@ p {
 }
 
 section {
-    padding-top: 10px 5px;
-    margin-left: 10px;
-    margin-right: 10px;
-}
+    margin: 5vh 5px;
+    display: flex;
+    flex-direction: column;
+} 
 
 dt {
     font-weight: 900;
@@ -56,6 +69,10 @@ dd {
     font-style: italic;
 }
 
+footer {
+    display: flex;
+    flex-direction: column;
+}
 
 .preformatted {
     white-space: pre;
@@ -71,23 +88,27 @@ dd {
     letter-spacing: 1.5px;
 }
 
+/* .flex-row-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.flex-column-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+} */
+
 img.image {
-    background-image: url("../src/bg.jpg");
-    /* height: 1000px;
-    width: 1000px; */
+    background-image: url("../images/bg.jpg");
     height: 60vh;
     width: 60vw;
     box-shadow: 0 0 10px 2px;
 }
-
 
 @font-face {
     font-family: 'Comic Sans MS';
     src: url("../fonts/Comic Sans MS.ttf");
 }
 
-
-/* --text-transform */
-/* --margin */
-/* --font-style */
-/* --teni */
