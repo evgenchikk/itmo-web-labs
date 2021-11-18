@@ -180,3 +180,61 @@ section > img.image {
     src: url("../fonts/Comic Sans MS.ttf");
 }
 
+
+/* -------------------  table with using css grid  ------------------- */
+div.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(9, 0.4fr);
+
+    grid-template-areas: 
+    "column1 column2 column3"
+    "row1-first row1-second row1-third"
+    "row2-first row2-second row2-third"
+    "row3-first row3-second row3-third"
+    "row4-first row4-second row4-third"
+    "row5-first row5-second row5-third"
+    "row6-first row6-second row6-third"
+    "row7-first row7-second row7-third"
+    "row8-first row8-second row8-third";
+}
+
+div.grid-container > div {
+    border: black solid 1px;
+    border-spacing: 0;
+    padding: 2% 5%;
+}
+
+div.header-column1 {grid-area: column1; text-align: left; font-weight: bolder; background-color: #EAF2D3;}
+div.header-column2 {grid-area: column2; text-align: left; font-weight: bolder; background-color: #EAF2D3;}
+div.header-column3 {grid-area: column3; text-align: left; font-weight: bolder; background-color: #EAF2D3;}
+
+div.row1-first {grid-area: row1-first; text-align: left; font-weight: bolder;}
+div.row1-second {grid-area: row1-second; text-align: right;}
+div.row1-third {grid-area: row1-third; text-align: right;}
+
+div.row2-first {grid-area: row2-first; text-align: left; font-weight: bolder; background-color: #EAF2D3;}
+div.row2-second {grid-area: row2-second; text-align: right; background-color: #EAF2D3;}
+div.row2-third {grid-area: row2-third; text-align: right; background-color: #EAF2D3;}
+
+div.row3-first {grid-area: row3-first; text-align: left; font-weight: bolder;}
+div.row3-second {grid-area: row3-second; text-align: right;}
+div.row3-third {grid-area: row3-third; text-align: right;}
+
+div.row4-first {grid-area: row4-first; text-align: left; font-weight: bolder; background-color: #EAF2D3;}
+div.row4-second {grid-area: row4-second; text-align: right; background-color: #EAF2D3;}
+div.row4-third {grid-area: row4-third; text-align: right; background-color: #EAF2D3;}
+
+div.row5-first {grid-area: row5-first; text-align: left; font-weight: bolder;}
+div.row5-second {grid-area: row5-second; text-align: right;}
+div.row5-third {grid-area: row5-third; text-align: right;}
+
+div.row6-first {grid-area: row6-first; text-align: left; font-weight: bolder; background-color: #EAF2D3;}
+div.row6-second {grid-area: row6-second; text-align: right; background-color: #EAF2D3;}
+div.row6-third {grid-area: row6-third; text-align: right; background-color: #EAF2D3;}
+
+div.row7-first {grid-area: row7-first; text-align: left; font-weight: bolder;}
+div.row7-second {grid-area: row7-second; text-align: right;}
+div.row7-third {grid-area: row7-third; text-align: right;}
+
+div.row8 {grid-column: row8-first / row8-third; text-align: center; background-color: #EAF2D3;}

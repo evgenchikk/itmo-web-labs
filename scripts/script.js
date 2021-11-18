@@ -2,13 +2,10 @@ var LoadingTime = 0;
 
 var start = new Date();
 
-window.onload = function() {
-    LoadingTime = (new Date).getTime() - start.getTime();
-}
+var loadingTime = new Date().getTime();
 
-// window.addEventListener("load", function() {
-//     console.log((new Date).getTime() - window.startTime); 
-// }, false);
+window.addEventListener("load", function() {
+    document.getElementById('loadingtime').textContent = "Время загрузки страницы: " + ((new Date).getTime() - loadingTime) +  " ms";
+}, false);
 
-document.getElementById("loadingtime").textContent = "aaaaaa";
 
