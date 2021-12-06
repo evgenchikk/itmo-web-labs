@@ -13,6 +13,11 @@ table {
     height: 50vh;
 }
 
+table.table-example {
+    width: 30vw;
+    height: 20vh;
+}
+
 table, th, tr, td {
     border: 1px solid black;
     border-spacing: 0;
@@ -86,6 +91,10 @@ section {
     display: flex;
     flex-direction: column;
 } 
+
+section.hidden {
+    display: none;
+}
 
 @media (max-width: 1023px) {
     section.gallery {
@@ -241,7 +250,7 @@ div.row8 {grid-column: row8-first / row8-third; text-align: center; background-c
 
 
 
-/* -------------------  page menu with  ------------------- */
+/* -------------------  page menu  ------------------- */
 
 #nav-icon3 {
     width: 40px;
@@ -388,7 +397,7 @@ body.sidebar-opened {
     border-left-color: #90b5cc;
 }
 .sidebar ul li a:hover {
-    cursor:pointer;
+    cursor: pointer;
     background: #F5F5F5;
     border-left-color: #2196F3;
 }

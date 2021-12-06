@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>DHTML</title>
+	<meta charset="utf-8"/>
+	<meta name="author" content="Belonogov Evgeny"/>
+	<meta name="description" content="This page contains dynamic html (DHTML)"/>
+	<link rel="stylesheet" type="text/css" href="../styles/main.css">
+	<script src="../scripts/dhtmlscript.js"></script>
+    <script src="../scripts/script.js"></script>
+</head>
+<body>
+    <div id="nav-icon3" class="pushmenu" data-title="MENU">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <nav class="sidebar">
+        <div class="text d-flex p-2">
+            <h4>МЕНЮ САЙТА</h4>
+            <div id="nav-icon3" class="pushmenu opened">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>	
+        </div>
+        <div class="menu-main-menu-container">
+            <ul id="menu-main-menu">
+                <li><a href="../index.html">Главная</a></li>
+                <li><a href="./page.html">Галерея фотографий</a></li>
+                <li><a href="./plants.html">Таблица</a></li>
+                <li><a href="./dhtml.html">Страница с DHTML</a></li>
+            </ul>
+        </div>
+    </nav>    
+    <div class="hidden-overley"></div>
+
+    <section>
+        <h4>Создание таблицы с использованием DHTML</h4>
+        <h5>Шаблон таблицы (количество строк и столбцов может быть любым):</h5>
+        <table class="table-example">
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <form name="tableParams" action="../scripts/dhtmlscript.js"> 
+            <p>Количество строк таблицы 
+                <input type="text" tabindex="1" size="3" pattern="[0-9]{,3}" name="rowsCount" placeholder="3" required>
+            </p>
+            <p>Количество столбцов таблицы 
+                <input type="text" tabindex="2" size="3" pattern="[0-9]{,3}" name="colsCount" placeholder="3" required>
+            </p>
+            <span id="submit" tabindex="3"><input type="button" name="createButton" onclick="getParams()" value="Создать"></span>
+            <span id="load" tabindex="4"><input type="button" name="loadButton" onclick="loadData()" value="Загрузить из хранилища"></span>
+        </form>
+    </section>
+    <section id="dhtml-section" class="hidden">
+        <h4>Результат:</h4>
+        <div id="dhtmlDiv"></div>
+    </section>
+</body>
+<footer>
+    <p id="loadingtime"></p>
+    <script>
+      var d = new Date();
+      var day = new Array("Воскресенье","Понедельник","Вторник","Среда","Четверг","Пятница","Суббота");
+      var month = new Array("января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря");
+      
+      document.write("<p align=\"center\"><time>" + day[d.getDay()] + " " + d.getDate() + " " + month[d.getMonth()]
+      + " " + d.getFullYear() + " г." + "</time></p>");
+    </script>
+</footer>
+</html>
