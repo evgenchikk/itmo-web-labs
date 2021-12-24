@@ -40,6 +40,16 @@ tr:nth-child(odd) {
     background-color: #EAF2D3; 
 }
 
+span.hidden {
+    display: none;
+}
+
+textarea {
+    height: 90%; 
+    width: 90%; 
+    opacity: 0.5;
+}
+
 body.photogallery {
     display: flex;
     flex-direction: column;

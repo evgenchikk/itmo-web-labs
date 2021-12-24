@@ -32,6 +32,7 @@
                 <li><a href="./page.html">Галерея фотографий</a></li>
                 <li><a href="./plants.html">Таблица</a></li>
                 <li><a href="./dhtml.html">Страница с DHTML</a></li>
+                <li><a href="./promise.html">Страница с Promise</a></li>
             </ul>
         </div>
     </nav>    
@@ -62,10 +63,10 @@
     
         <form name="tableParams" action="../scripts/dhtmlscript.js"> 
             <p>Количество строк таблицы 
-                <input type="text" tabindex="1" size="3" pattern="[0-9]{,3}" name="rowsCount" placeholder="3" required>
+                <input type="number" tabindex="1" min="1" size="3" name="rowsCount" placeholder="3" required>
             </p>
             <p>Количество столбцов таблицы 
-                <input type="text" tabindex="2" size="3" pattern="[0-9]{,3}" name="colsCount" placeholder="3" required>
+                <input type="number" tabindex="2" min="1" size="3" name="colsCount" placeholder="3" required>
             </p>
             <span id="submit" tabindex="3"><input type="button" name="createButton" onclick="getParams()" value="Создать"></span>
             <span id="load" tabindex="4"><input type="button" name="loadButton" onclick="loadData()" value="Загрузить из хранилища"></span>
@@ -73,7 +74,28 @@
     </section>
     <section id="dhtml-section" class="hidden">
         <h4>Результат:</h4>
-        <div id="dhtmlDiv"></div>
+        <div id="dhtmlDiv">
+            <form name="tableContent">
+                <table id="dTable">
+                    <tbody id="dTableBody">
+ 
+                    </tbody>
+                </table>
+
+                <template id="templateColumn">
+                    <td style="text-align:center!important;">
+                        <textarea name="tableTextarea"></textarea>
+                    </td>
+                </template>
+                <br>
+                <span id="textSubmit" class="hidden"><input type="button" name="drawButton" onclick="getText()" value="Отрисовка"></span>
+            </form>
+            <div id="saveDiv" style="display:none;">
+                <form name="dataSaveForm">
+                    <span id="dataSave"><input type="button" name="saveButton" value="Save data"></span>
+                </form>
+            </div>
+        </div>
     </section>
 </body>
 <footer>

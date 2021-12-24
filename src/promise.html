@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>Portfolio Belonogov E. M33122</title>
+	<meta charset="utf-8"/>
+	<meta name="author" content="Belonogov Evgeny"/>
+	<meta name="description" content="This page is for 'promise'"/>
+	<link rel="stylesheet" type="text/css" href="../styles/main.css">
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/promise.js"></script>
+</head>
+<body>
+    <div id="nav-icon3" class="pushmenu" data-title="MENU">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+	<nav class="sidebar">
+		<div class="text d-flex p-2">
+			<h4>МЕНЮ САЙТА</h4>
+		  	<div id="nav-icon3" class="pushmenu opened">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+		  	</div>	
+		</div>
+		<div class="menu-main-menu-container">
+		  	<ul id="menu-main-menu">
+				<li><a href="../index.html">Главная</a></li>
+				<li><a href="./page.html">Галерея фотографий</a></li>
+                <li><a href="./plants.html">Таблица</a></li>
+                <li><a href="./dhtml.html">Страница с DHTML</a></li>
+                <li><a href="./promise.html">Страница с Promise</a></li>
+		  	</ul>
+		</div>
+	</nav>    
+	<div class="hidden-overley"></div>
+
+    <h2>Знакомство с сущностью Promise</h2>
+    <form name="fetchForm">
+        <span tabindex="1" id="fetchSpan"><input type="button" name="button" onclick="getData()" value="Get data"></span>
+    </form>
+
+    <!-- <template id="userBoard">
+    </template> -->
+
+    <div id="fetchDiv" style="display:none;">
+
+    </div>
+    <footer>
+        <p id="loadingtime"></p>
+        <a href="../index.html" title="Go to the main page"><img src="../images/buttons/back-button.png" height="5%" width="5%"></a>
+    </footer>
+</body>
+</html>

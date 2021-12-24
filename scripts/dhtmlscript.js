@@ -1,6 +1,4 @@
-rowsCount = 0;
-colsCount = 0;
-tabIndex = 5;
+let tabIndex = 4;
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,8 +23,6 @@ function getParams() {
     rowsCount = document.tableParams.rowsCount.value;
     colsCount = document.tableParams.colsCount.value;
 
-    // alert("Rows: " + rowsCount + "\nCols: " + colsCount);
-
     if (rowsCount <= 0 || colsCount <= 0 || !Number.isInteger(parseInt(rowsCount)) || !Number.isInteger(parseInt(colsCount))) 
         alert('Wrong format');
     else 
@@ -35,21 +31,23 @@ function getParams() {
 
 
 function createTable(rowsCount, colsCount) {
-    tableText = "<form name=\"tableContent\"><table id=\"dTable\"><tbody>";
+    document.getElementById('saveDiv').style = "display:none;";
+    document.getElementById('textSubmit').style = "display:block;";
+
+    tableText = "";
+
+    let template = document.getElementById('templateColumn');
 
     for (i = 0; i < rowsCount; i++) {
         tableText += "<tr>";
         for (j = 0; j < colsCount; j++) {
-            tableText += "<td style=\"text-align:center!important;\"><textarea tabindex=" + tabIndex + " name=\"tableTextarea\" style=\"height:90%; width:90%; opacity:0.5;\"></textarea></td>";
-            tabIndex += 1;
+            tableText += template.innerHTML;
         }
         tableText += "</tr>";
     }
-    tableText += "</tbody></table><br><span id=\"textSubmit\" tabindex=" + tabIndex + "><input type=\"button\" name=\"button\" onclick=\"inputText(" + rowsCount + "," + colsCount + ")\" value=\"Отрисовка\"></span></form>"
-    tabIndex += 1;
 
-    divBlock = document.getElementById('dhtmlDiv');
-    divBlock.innerHTML = tableText;
+    tableBody = document.getElementById('dTableBody');
+    tableBody.innerHTML = tableText;
 
     document.getElementById('dTable').style.height = 10 * rowsCount + "vh";
     document.getElementById('dTable').style.width = 10 * colsCount + "vw";
@@ -57,56 +55,72 @@ function createTable(rowsCount, colsCount) {
     document.getElementById('dhtml-section').classList.remove('hidden');
 
 
+    document.querySelectorAll('textarea').forEach(function (el) { 
+        el.tabIndex = tabIndex++;
+    })
+
+    document.getElementById('textSubmit').tabIndex = tabIndex++;
     document.getElementById('textSubmit').addEventListener('keydown', (e) => {
         if (e.key == 'Enter') 
-            document.tableContent.button.click();
+            document.tableContent.drawButton.click();
     })
 }
 
 
-function inputText(rowsCount, colsCount) {
+function getText() {
+    document.getElementById('textSubmit').style = "display:none;";
+
     allTextNodeList = document.getElementsByName('tableTextarea');
     allText = [];
 
     for (i = 0; i < allTextNodeList.length; i++) 
         allText.push(allTextNodeList[i].value);
-    
 
-    document.getElementById('dTable').remove();
-    tableText = "<table id=\"dTable\"><tbody>";
+    drawTable(rowsCount, colsCount, allText);
+}
+
+
+function drawTable(rowsCount, colsCount, data) {
+    document.getElementById('dTableBody').innerHTML = "";
+
+    tableText = "";
     for (i = 0; i < rowsCount; i++) {
         tableText += "<tr>";
         for (j = 0; j < colsCount; j++) 
-            tableText += "<td style=\"text-align:center!important;\">" + allText[i * colsCount + j] + "</td>";
+            tableText += "<td style=\"text-align:center!important;\">" + data[i * colsCount + j] + "</td>";
         
         tableText += "</tr>";
     }
-    tableText += "</tbody></table>"
 
-    divBlock = document.getElementById('dhtmlDiv');
-    divBlock.innerHTML = tableText + "<br><form name=\"dataSaveForm\"><span id=\"dataSave\" tabindex=" + tabIndex + "><input type=\"button\" name=\"button\" onclick=\"saveToStorage()\" value=\"Save data\"></span></form>";
-    tabIndex += 1;
+    tableBody = document.getElementById('dTableBody');
+    tableBody.innerHTML = tableText 
 
     document.getElementById('dTable').style.height = 10 * rowsCount + "vh";
     document.getElementById('dTable').style.width = 10 * colsCount + "vw";
 
+    document.getElementById('saveDiv').style = "display:block;";
+    document.dataSaveForm.onclick = saveToStorage(rowsCount, colsCount, data)
+    document.getElementById('dataSave').tabIndex = tabIndex++;
     document.getElementById('dataSave').addEventListener('keydown', (e) => {
         if (e.key == 'Enter') 
-            document.dataSaveForm.button.click();
+            document.dataSaveForm.saveButton.click();
     })
 }
 
 
-function saveToStorage() {
-    data = document.getElementById('dhtmlDiv').innerHTML;
-    sessionStorage.setItem('table', data);
+function saveToStorage(rowsCount, colsCount, data) {
+    sessionStorage.setItem('rowsCount', rowsCount);
+    sessionStorage.setItem('colsCount', colsCount);
+    sessionStorage.setItem('content', JSON.stringify(data));
 }   
 
 
 function loadData() {
-    if ((document.getElementById('dhtmlDiv').innerHTML = sessionStorage.getItem('table')) == null) {
-        alert('No data in session storage');
-        return;
-    }
     document.getElementById('dhtml-section').classList.remove('hidden');
+
+    data = JSON.parse(sessionStorage.getItem('content'));
+    rowsCount = sessionStorage.getItem('rowsCount');
+    colsCount = sessionStorage.getItem('colsCount');
+
+    drawTable(rowsCount, colsCount, data);
 }
