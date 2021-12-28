@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>CodeMirror</title>
+	<meta charset="utf-8"/>
+	<meta name="author" content="Belonogov Evgeny"/>
+	<meta name="description" content="CodeMirror"/>
+	<link rel="stylesheet" type="text/css" href="../styles/main.css">
+
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.7.0/codemirror.css" rel="stylesheet"/>  
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/theme/dracula.css" rel="stylesheet"/>  <!-- темная тема -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/addon/hint/show-hint.css" rel="stylesheet"/>  <!-- shows css hints -->
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.7.0/codemirror.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/css/css.js"></script>  <!-- css-разметка -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/keymap/sublime.js"></script>  <!-- keymap от sublime -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/addon/edit/closebrackets.js"></script>  <!-- autoCloseBrackets -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/addon/edit/matchbrackets.js"></script>  <!-- matchBrackets -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/addon/hint/css-hint.js"></script>  <!-- css hints -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/addon/hint/show-hint.js"></script>  <!-- shows css hints -->
+
+    <script src="../scripts/script.js"></script>
+</head>
+<body style="height: 100%;">
+    <div id="nav-icon3" class="pushmenu" data-title="MENU">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+	<nav class="sidebar">
+		<div class="text d-flex p-2">
+			<h4>МЕНЮ САЙТА</h4>
+		  	<div id="nav-icon3" class="pushmenu opened">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+		  	</div>	
+		</div>
+		<div class="menu-main-menu-container">
+		  	<ul id="menu-main-menu">
+				<li><a href="../index.html">Главная</a></li>
+				<li><a href="./page.html">Галерея фотографий</a></li>
+                <li><a href="./plants.html">Таблица</a></li>
+                <li><a href="./dhtml.html">Страница с DHTML</a></li>
+                <li><a href="./promise.html">Страница с Promise</a></li>
+                <li><a href="./libusing.html">Библиотека CodeMirror</a></li>
+		  	</ul>
+		</div>
+	</nav>    
+	<div class="hidden-overley"></div>
+
+	<h4>Textarea with css language formatting:</h4>
+	<textarea id="codeTextarea"></textarea>
+	<script>
+		var codeMirror = CodeMirror.fromTextArea(document.getElementById('codeTextarea'), {
+			lineNumbers: true,            
+			matchBrackets: true,          
+			autoCloseBrackets: true, 
+			mode: 'css', 
+			indentUnit: 4,                    
+			theme: 'dracula',
+			keyMap: 'sublime',
+			// extraKeys: {'Enter': 'autocomplete'},
+			extraKeys: {'Ctrl-Space': 'autocomplete'}
+		});
+
+		
+		codeMirror.setSize('50%', '50%');
+	</script>
+
+    <footer>
+        <p id="loadingtime"></p>
+        <a href="../index.html" title="Go to the main page"><img src="../images/buttons/back-button.png" height="5%" width="5%"></a>
+    </footer>
+</body>
+</html>

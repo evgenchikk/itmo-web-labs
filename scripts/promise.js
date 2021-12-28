@@ -8,32 +8,52 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 });
 
-let tmp = null;
 
 function getData() {
-    fetch('https://jsonplaceholder.typicode.com/users')
-        .then((response) => {
-            if (response.ok) 
-                return response.json();
-            else 
-                throw new Error(response.status)
-        })
-        .then((data) => {
-            let div = document.getElementById('fetchDiv');
-            let output = '';
+    document.getElementById('fetchSpan').classList.toggle('hidden');
+    document.getElementById('preloader').style.display = "block";
 
-            tmp = data;
+    setTimeout(fetchRequest, 3000); // для того, чтобы прелоадер немного поработал
 
-            for (obj in data) {
-                output += '<div style=\"background-color:azure;margin:3%;width:min-content;\">';
-                keys = Object.keys(obj);
-                for (key in keys)
-                    output += `<p>${key}: ${data[key]}</p>`
-                output += '</div><br>';
-            }
+    function fetchRequest() {
+        fetch('https://jsonplaceholder.typicode.com/users/') // , {id: '1'})
+            .then((response) => {
+                if (response.ok) {
+                    document.getElementById('preloader').style.display = "none";
+                    return response.json();
+                } else {
+                    document.getElementById('preloader').src = '../images/preloaders/err.png';
+                    document.getElementById('fetchSpan').classList.toggle('hidden');
+                    throw new Error(response.status);
+                }
+            })
+            .then((data) => {
+                let div = document.getElementById('fetchDiv');
+                let output = '';
 
-            div.innerHTML = output;
-            div.style="display:block;";
-        })
-        .catch(alert)
+                function getValues(obj, keys) {
+                    let result = '';
+
+                    for (key of keys) {
+                        if (typeof(obj[key]) == 'object') {
+                            result += key + ":" + "<pre>" + getValues(obj[key], Object.keys(obj[key])) + "</pre>";
+                            continue;
+                        } else 
+                            result += `<p>${key}: ${obj[key]}</p>`;
+                    }
+                    return result;
+                }
+
+                for (obj of data) {
+                    output += '<div style=\"background-color:azure;margin:3%;width:min-content;border:solid black;padding:5px;\">';
+                    keys = Object.keys(obj);
+
+                    output += getValues(obj, keys) + '</div><br>';
+                }
+
+                div.innerHTML = output;
+                div.style="display:block;";
+            })
+            .catch(alert)
+    }
 }

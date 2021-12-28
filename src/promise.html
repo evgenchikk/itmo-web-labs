@@ -33,6 +33,7 @@
                 <li><a href="./plants.html">Таблица</a></li>
                 <li><a href="./dhtml.html">Страница с DHTML</a></li>
                 <li><a href="./promise.html">Страница с Promise</a></li>
+				<li><a href="./libusing.html">Библиотека CodeMirror</a></li>
 		  	</ul>
 		</div>
 	</nav>    
@@ -42,13 +43,10 @@
     <form name="fetchForm">
         <span tabindex="1" id="fetchSpan"><input type="button" name="button" onclick="getData()" value="Get data"></span>
     </form>
+	<img src="../images/preloaders/loader.webp" style="width:5%;height:5%;margin:15px;display:none;" id="preloader">
 
-    <!-- <template id="userBoard">
-    </template> -->
+    <div id="fetchDiv" style="display:none;"></div>
 
-    <div id="fetchDiv" style="display:none;">
-
-    </div>
     <footer>
         <p id="loadingtime"></p>
         <a href="../index.html" title="Go to the main page"><img src="../images/buttons/back-button.png" height="5%" width="5%"></a>
