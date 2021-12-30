@@ -13,11 +13,16 @@
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.7.0/codemirror.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/css/css.js"></script>  <!-- css-разметка -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/python/python.js"></script>  <!-- python-разметка -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/xml/xml.js"></script>  <!-- xml-разметка -->
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/keymap/sublime.js"></script>  <!-- keymap от sublime -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/addon/edit/closebrackets.js"></script>  <!-- autoCloseBrackets -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/addon/edit/matchbrackets.js"></script>  <!-- matchBrackets -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/addon/edit/closetag.js"></script>  <!-- autoCloseTags -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/addon/hint/css-hint.js"></script>  <!-- css hints -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/addon/hint/show-hint.js"></script>  <!-- shows css hints -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/addon/hint/xml-hint.js"></script>  <!-- xml hints -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/addon/hint/show-hint.js"></script>  <!-- shows hints -->
 
     <script src="../scripts/script.js"></script>
 </head>
@@ -52,22 +57,51 @@
 	<div class="hidden-overley"></div>
 
 	<h4>Textarea with css language formatting:</h4>
+	<p>Выбор языка:</p>
+	<div style="margin-bottom:1%;">
+		<form name="languageForm">
+			<select tabindex="1" name="languageSelector">
+				<option selected value="css">CSS</option>
+				<option value="python">Python</option>
+				<option value="xml">XML</option>
+			</select>
+			<span tabindex="2" id="languageSpan"><input type="button" name="languageButton" value="Select" onclick="changeMode()"></span>
+		</form>
+	</div>
 	<textarea id="codeTextarea"></textarea>
 	<script>
+		document.getElementById('languageSpan').addEventListener('keydown', (e) => {
+			if (e.key == 'Enter') {
+				document.languageForm.languageButton.click();
+			}
+		})
+
 		var codeMirror = CodeMirror.fromTextArea(document.getElementById('codeTextarea'), {
-			lineNumbers: true,            
-			matchBrackets: true,          
-			autoCloseBrackets: true, 
-			mode: 'css', 
-			indentUnit: 4,                    
-			theme: 'dracula',
-			keyMap: 'sublime',
+			lineNumbers: true,  // enable line numbers   
+			matchBrackets: true,  //enable match brackets
+			autoCloseBrackets: true, // enable auto complete for brackets
+			mode: 'css',  // enable css mode
+			indentUnit: 4,  // set tab size  
+			theme: 'dracula',  // set theme
+			keyMap: 'sublime',  // set sublime keymap
 			// extraKeys: {'Enter': 'autocomplete'},
 			extraKeys: {'Ctrl-Space': 'autocomplete'}
 		});
 
 		
 		codeMirror.setSize('50%', '50%');
+
+		function changeMode() {
+			if (codeMirror.getMode() != languageForm.languageSelector.value)
+				codeMirror.setOption('mode', languageForm.languageSelector.value);
+
+			if (languageForm.languageSelector.value == 'xml')
+				codeMirror.setOption('autoCloseTags', true);
+			else
+				codeMirror.setOption('autoCloseTags', false);
+
+			// alert(codeMirror.getMode().name);
+		}
 	</script>
 
     <footer>

@@ -41,9 +41,18 @@
 
     <h2>Знакомство с сущностью Promise</h2>
     <form name="fetchForm">
-        <span tabindex="1" id="fetchSpan"><input type="button" name="button" onclick="getData()" value="Get data"></span>
+		<p>Выбор данных для загрузки:</p>
+		<select tabindex="1" name="dataSelector">
+			<option value="posts">Posts</option>
+			<option value="comments">Comments</option>
+			<option value="albums">Albums</option>
+			<option value="photos">Photos</option>
+			<option value="todos">Todos</option>
+			<option selected value="users">Users</option>
+		</select>
+        <span tabindex="2" id="fetchSpan"><input type="button" name="button" onclick="getData()" value="Get data"></span>
     </form>
-	<img src="../images/preloaders/loader.webp" style="width:5%;height:5%;margin:15px;display:none;" id="preloader">
+	<img style="width:5%;height:5%;margin:15px;display:none;" id="preloader">
 
     <div id="fetchDiv" style="display:none;"></div>
 

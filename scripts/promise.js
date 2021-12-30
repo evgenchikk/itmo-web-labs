@@ -9,23 +9,30 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+function errFunction(err) {
+    document.getElementById('preloader').src = '../images/preloaders/err.png';
+    // document.getElementById('fetchSpan').classList.toggle('hidden');
+    alert(err);
+}
+
+
 function getData() {
-    document.getElementById('fetchSpan').classList.toggle('hidden');
+    // document.getElementById('fetchSpan').classList.toggle('hidden');
+    document.getElementById('preloader').src = '../images/preloaders/loader.webp';
     document.getElementById('preloader').style.display = "block";
 
     setTimeout(fetchRequest, 3000); // для того, чтобы прелоадер немного поработал
 
     function fetchRequest() {
-        fetch('https://jsonplaceholder.typicode.com/users/') // , {id: '1'})
+        let url = String('https://jsonplaceholder.typicode.com/') + fetchForm.dataSelector.value;
+        
+        fetch(url) // , {id: '1'})
             .then((response) => {
                 if (response.ok) {
                     document.getElementById('preloader').style.display = "none";
                     return response.json();
-                } else {
-                    document.getElementById('preloader').src = '../images/preloaders/err.png';
-                    document.getElementById('fetchSpan').classList.toggle('hidden');
+                } else 
                     throw new Error(response.status);
-                }
             })
             .then((data) => {
                 let div = document.getElementById('fetchDiv');
@@ -54,6 +61,6 @@ function getData() {
                 div.innerHTML = output;
                 div.style="display:block;";
             })
-            .catch(alert)
+            .catch(errFunction)
     }
 }
